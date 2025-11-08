@@ -1,0 +1,18 @@
+fastapi==0.95.2
+uvicorn[standard]==0.22.0
+python-multipart==0.0.6
+aiofiles==23.1.0
+pillow==10.0.0
+numpy==1.26.0
+opencv-python-headless==4.8.0.76
+pytesseract==0.3.10
+torch>=2.0.0         # optional but required for many restoration models (install matching CUDA)
+torchaudio
+torchvision
+realesrgan>=0.3.0    # for Real-ESRGAN super-resolution
+# Optional: for SwinIR (planned replacement)
+basicsr
+# Optional: for GFPGAN
+gfpgan
+# Optional: for MPRNet
+mprnet
