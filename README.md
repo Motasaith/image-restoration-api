@@ -34,10 +34,25 @@ A FastAPI-based RESTful API service for intelligent image restoration. It automa
    ```
 
 3. **Model Setup**:
-   - Models are pre-included in the `models/` directory (Real-ESRGAN, GFPGAN, Restormer repositories are cloned).
-   - Weights are downloaded automatically on first run or can be pre-downloaded from their respective repos.
-   - For Real-ESRGAN: Weights are fetched from GitHub releases.
-   - For GFPGAN/Restormer: Ensure `models/gfpgan/weights/` and `models/restormer/weights/` contain the required PTH files.
+   - Download and set up the required AI models in the `models/` directory:
+     - **Real-ESRGAN**: Automatically downloads weights on first run from GitHub releases. No manual setup needed.
+     - **GFPGAN**: Clone the repo into `models/gfpgan/` and download weights:
+       ```bash
+       git clone https://github.com/TencentARC/GFPGAN.git models/gfpgan
+       # Download GFPGANv1.3.pth to models/gfpgan/weights/
+       wget https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.3.pth -P models/gfpgan/weights/
+       ```
+     - **Restormer**: Clone the repo into `models/restormer/` and download weights:
+       ```bash
+       git clone https://github.com/swz30/Restormer.git models/restormer
+       # Download pre-trained weights to models/restormer/weights/ (e.g., deraining.pth, motion_deblurring.pth, etc.)
+       # See Restormer repo for download links
+       ```
+     - **SwinIR** (planned replacement for Real-ESRGAN): Clone into `models/SwinIR/` if refactoring:
+       ```bash
+       git clone https://github.com/JingyunLiang/SwinIR.git models/SwinIR
+       ```
+   - Models are loaded on-demand; weights are cached after first use.
 
 4. **Run the server**:
    ```bash
